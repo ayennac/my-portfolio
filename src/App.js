@@ -1,5 +1,9 @@
 import './App.css';
 
+//https://www.youtube.com/watch?v=w7ejDZ8SWv8&t=3214s
+
+import { useState } from 'react'
+
 
 import Header from './components/Header'
 
@@ -16,15 +20,32 @@ function App() {
         console.log('Click')
   }
 
+  {/*State is immutable. You can't use 'tasks.push()' to update tasks. Everytime you update tasks it sends task again to change state*/}
+  {/*Task is here rather than in the component tasks because we ultimately will use the data of tasks everywhere in the app. 
+  By putting it in the component tasks. we limit it to just tasks.js. 
+  */}
+  const[tasks, setTasks] = useState([{
+    id: 1,
+    text: 'Doctors Appointment',
+    day: 'Feb 5th at 2:30pm',
+    reminder: true,
+    },
+    {
+    id: 2,
+    text: 'Meating at school',
+    day: 'Feb 6th at 1:30 pm',
+    reminder: true,
+    }
+    ]
+    )
+
   return (
     <div className="App">
 
       {/*Header is declared as a component and imported from the components folder */}
       <div className ='container'>
         <Header />
-      </div>
-
-      <h1>Hello {name}</h1>
+        <h1>Hello {name}</h1>
 
       {/* JS operations can be done in line with the curly braces */}
       <p>{1 + 1}</p>
@@ -34,7 +55,10 @@ function App() {
 
       <Button color = 'green' text ='Hello'/>
       <Button color = 'blue' text = 'Add' onClick = {onClick} />
-      <Tasks/>
+      <Tasks tasks = {tasks}/>
+      </div>
+
+      
 
 
     </div>
