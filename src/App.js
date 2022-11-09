@@ -5,13 +5,17 @@ import Header from './components/Header'
 
 import Button from './components/Button'
 
+import Tasks from './components/Tasks'
+
 //Using JS and variables above the return function
 const name = 'Brad';
 
 function App() {
+
   const onClick = () =>{
         console.log('Click')
   }
+
   return (
     <div className="App">
 
@@ -30,6 +34,7 @@ function App() {
 
       <Button color = 'green' text ='Hello'/>
       <Button color = 'blue' text = 'Add' onClick = {onClick} />
+      <Tasks/>
 
 
     </div>
