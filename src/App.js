@@ -20,10 +20,14 @@ function App() {
         console.log('Click')
   }
 
-  {/*State is immutable. You can't use 'tasks.push()' to update tasks. Everytime you update tasks it sends task again to change state*/}
-  {/*Task is here rather than in the component tasks because we ultimately will use the data of tasks everywhere in the app. 
+  const deleteTask = (id) =>{
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  /*State is immutable. You can't use 'tasks.push()' to update tasks. Everytime you update tasks it sends task again to change state*/
+  /*Task is here rather than in the component tasks because we ultimately will use the data of tasks everywhere in the app. 
   By putting it in the component tasks. we limit it to just tasks.js. 
-  */}
+  */
   const[tasks, setTasks] = useState([{
     id: 1,
     text: 'Doctors Appointment',
@@ -55,7 +59,7 @@ function App() {
 
       <Button color = 'green' text ='Hello'/>
       <Button color = 'blue' text = 'Add' onClick = {onClick} />
-      <Tasks tasks = {tasks}/>
+      <Tasks tasks = {tasks} onDelete={deleteTask}/>
       </div>
 
       
