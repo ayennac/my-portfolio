@@ -9,6 +9,9 @@ import Button from './components/Button'
 const name = 'Brad';
 
 function App() {
+  const onClick = () =>{
+        console.log('Click')
+  }
   return (
     <div className="App">
 
@@ -26,6 +29,7 @@ function App() {
       <button className = 'btn'>Button 1</button>
 
       <Button color = 'green' text ='Hello'/>
+      <Button color = 'blue' text = 'Add' onClick = {onClick} />
 
 
     </div>
@@ -44,6 +48,16 @@ class App extends React.Component {
     return <h1> hello from a class</h1>
   }
 }
+*/
+
+/*
+Keep in mind what you want in the global state and 
+what can be handed down as props from the global state
+to the components
+
+--> for example, we have the tasks data in App.js but to delete the task
+  we will have to click an icon all the way in Task.js. 
+  We can create a delete function at the app.js level and pass it down to Task.js 
 */
 
 export default App;
