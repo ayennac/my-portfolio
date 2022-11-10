@@ -20,8 +20,15 @@ function App() {
         console.log('Click')
   }
 
+
+  /* This function is deleting the tasks on the UI but not in the server */
   const deleteTask = (id) =>{
     setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  /* */
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => task.id ===id ? {...task, reminder: !task.reminder}: task))
   }
 
   /*State is immutable. You can't use 'tasks.push()' to update tasks. Everytime you update tasks it sends task again to change state*/
@@ -59,7 +66,7 @@ function App() {
 
       <Button color = 'green' text ='Hello'/>
       <Button color = 'blue' text = 'Add' onClick = {onClick} />
-      <Tasks tasks = {tasks} onDelete={deleteTask}/>
+      <Tasks tasks = {tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
       </div>
 
       
