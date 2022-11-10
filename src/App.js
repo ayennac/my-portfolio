@@ -11,6 +11,8 @@ import Button from './components/Button'
 
 import Tasks from './components/Tasks'
 
+import AddTask from './components/AddTask'
+
 //Using JS and variables above the return function
 const name = 'Brad';
 
@@ -56,6 +58,7 @@ function App() {
       {/*Header is declared as a component and imported from the components folder */}
       <div className ='container'>
         <Header />
+        <AddTask/>
         <h1>Hello {name}</h1>
 
       {/* JS operations can be done in line with the curly braces */}
