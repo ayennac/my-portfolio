@@ -23,6 +23,20 @@ function App() {
   }
 
 
+  /* add Task takes a task adds an ID to it
+  Then it calls setTasks which involves 
+  copying the current task through this syntax [...tasks] and
+  the adding the newTask at the very and of it */
+  const addTask =(task) => {
+    const id = Math.floor(Math.random() + 45)
+
+    const newTask = {id, ...task}
+
+    setTasks([...tasks, newTask])
+    console.log(tasks)
+  }
+  
+
   /* This function is deleting the tasks on the UI but not in the server */
   const deleteTask = (id) =>{
     setTasks(tasks.filter((task) => task.id !== id))
@@ -58,7 +72,7 @@ function App() {
       {/*Header is declared as a component and imported from the components folder */}
       <div className ='container'>
         <Header />
-        <AddTask/>
+        <AddTask onAdd ={addTask}/>
         <h1>Hello {name}</h1>
 
       {/* JS operations can be done in line with the curly braces */}
