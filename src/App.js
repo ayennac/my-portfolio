@@ -22,13 +22,15 @@ function App() {
         console.log('Click')
   }
 
+  const [showAddTask, setShowAddTask] = useState(false)
+
 
   /* add Task takes a task adds an ID to it
   Then it calls setTasks which involves 
   copying the current task through this syntax [...tasks] and
   the adding the newTask at the very and of it */
   const addTask =(task) => {
-    const id = Math.floor(Math.random() + 45)
+    const id = Math.floor(Math.random()*10000)+1
 
     const newTask = {id, ...task}
 
@@ -71,8 +73,8 @@ function App() {
 
       {/*Header is declared as a component and imported from the components folder */}
       <div className ='container'>
-        <Header />
-        <AddTask onAdd ={addTask}/>
+        <Header onAdd={() => setShowAddTask(!showAddTask)} />
+        {showAddTask && <AddTask onAdd ={addTask}/>}
         <h1>Hello {name}</h1>
 
       {/* JS operations can be done in line with the curly braces */}
@@ -81,6 +83,9 @@ function App() {
       {/*one way to initializate a button*/}
       <button className = 'btn'>Button 1</button>
 
+      {/* {showAdd ? 'red': 'green} you can do 
+      ternary statements in line making active and 
+      inactive states easy to show */}
       <Button color = 'green' text ='Hello'/>
       <Button color = 'blue' text = 'Add' onClick = {onClick} />
       <Tasks tasks = {tasks} onDelete={deleteTask} onToggle={toggleReminder}/>
